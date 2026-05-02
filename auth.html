@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGIPC – Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .auth-card { background: var(--bg2); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; width: 100%; max-width: 400px; }
+        .auth-toggle { display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        .toggle-btn { background: none; border: none; color: var(--muted); padding-bottom: 0.5rem; cursor: pointer; font-family: var(--font-display); font-size: 1.2rem; }
+        .toggle-btn.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+        .hidden { display: none; }
+        .auth-card input { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-toggle">
+            <button class="toggle-btn active" onclick="showAuth('login')">LOGIN</button>
+            <button class="toggle-btn" onclick="showAuth('signup')">SIGN UP</button>
+        </div>
+
+        <form id="login-form" class="contact-form">
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Enter ↗</button>
+        </form>
+
+        <form id="signup-form" class="contact-form hidden">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+        </form>
+        
+        <p style="margin-top: 20px; text-align: center;"><a href="index.html" style="color: var(--muted); text-decoration: none; font-size: 13px;">← Back to Home</a></p>
+    </div>
+</div>
+
+<script>
+    function showAuth(type) {
+        document.getElementById('login-form').classList.toggle('hidden', type !== 'login');
+        document.getElementById('signup-form').classList.toggle('hidden', type !== 'signup');
+        document.querySelectorAll('.toggle-btn').forEach((btn, idx) => {
+            btn.classList.toggle('active', (type === 'login' && idx === 0) || (type === 'signup' && idx === 1));
+        });
+    }
+</script>
+</body>
+</html>
