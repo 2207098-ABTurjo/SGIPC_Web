@@ -19,7 +19,6 @@ html { scroll-behavior: smooth; }
 
 body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.6; }
 
-/* Navigation */
 nav {
   position: fixed;
   top: 0;
@@ -75,14 +74,70 @@ nav:hover {
   gap: 2rem;
   list-style: none;
   align-items: center;
+  position: relative;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links .dropdown-toggle {
   color: var(--muted);
   text-decoration: none;
   font-size: 14px;
   transition: all 0.3s ease;
   position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.nav-links .dropdown-toggle:hover,
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-item-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  min-width: 180px;
+  background: rgba(17, 19, 24, 0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(167, 139, 250, 0.08);
+  color: var(--accent);
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-links a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -104,7 +159,6 @@ nav:hover {
   width: 100%;
 }
 
-/* Buttons */
 .btn {
   padding: 12px 28px;
   border-radius: 8px;
@@ -149,7 +203,6 @@ nav:hover {
   transform: translateY(-1px);
 }
 
-/* Sections */
 section { padding: 100px 3rem 60px; }
 
 .hero {
@@ -272,7 +325,6 @@ section { padding: 100px 3rem 60px; }
 .code-var { color: #86efac; }
 .code-num { color: #f59e0b; }
 
-/* Features Section */
 .features {
   background: var(--bg2);
   border-top: 1px solid var(--border);
@@ -406,11 +458,9 @@ section { padding: 100px 3rem 60px; }
   border-radius: 6px;
 }
 
-/* Forms */
 input { width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--text); outline: none; }
 input:focus { border-color: var(--accent); }
 
-/* Footer */
 footer {
   padding: 40px;
   text-align: center;
@@ -433,7 +483,6 @@ footer p {
   margin-top: 10px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   
@@ -485,7 +534,6 @@ footer p {
   }
 }
 
-/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
